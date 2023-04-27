@@ -7,6 +7,7 @@
     <thead>
       <tr>
         <th>ID</th>
+        <th>Figura</th>
         <th>Título</th>
         <th>Data</th>
         <th>Categoria</th>
@@ -19,6 +20,11 @@
       @foreach($noticias as $noticia)
         <tr>
           <td>{{$noticia->id}}</td>
+          <td>
+            @if($noticia->figura != "")
+              <img style="width:50px;height:50px;object-fit:cover" src="/storage/imagens/{{$noticia->figura}}">
+            @endif
+          </td>
           <td>{{$noticia->titulo}}</td>
           <td>{{$noticia->data->format('d/m/Y')}}</td>
           <td>{{$noticia->categoria->descricao}}</td>

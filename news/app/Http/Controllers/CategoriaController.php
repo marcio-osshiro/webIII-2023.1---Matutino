@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Categoria;
+use Illuminate\Support\Facades\Storage;
 
 class CategoriaController extends Controller
 {
@@ -27,6 +28,18 @@ class CategoriaController extends Controller
       } else {
         $categoria = Categoria::find($request->input('id'));
       }
+
+      if ($request->hasFile('arquivo')) {
+        $arquivo = $request->file('arquivo');
+        $arquivoSalvo = $arquivo->store('public/imagens');
+        $arquivoSalvo = explode("/", $arquivoSalvo);
+        $tamanho = count($arquivoSalvo);
+        if ($categoria->figura != "") {
+          Storage::delete("public/imagens/$categoria->figura");
+        }
+        $categoria->figura = $arquivoSalvo[$tamanho-1];
+      }
+
       $categoria->descricao =
         $request->input('descricao');
       $categoria->save();

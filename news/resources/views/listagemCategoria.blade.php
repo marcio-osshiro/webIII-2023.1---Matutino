@@ -8,6 +8,7 @@
       <tr>
         <th>ID</th>
         <th>Descrição</th>
+        <th>Figura</th>
         <th>Editar</th>
         <th>Excluir</th>
       </tr>
@@ -17,6 +18,11 @@
         <tr>
           <td>{{$categoria->id}}</td>
           <td>{{$categoria->descricao}}</td>
+          <td>
+            @if($categoria->figura != "")
+              <img style="width:50px;height:50px;object-fit:cover" src="/storage/imagens/{{$categoria->figura}}">
+            @endif
+          </td>
           <td><a class='btn btn-primary' href='editar/{{$categoria->id}}'>+</a>  </td>
           <td><a class='btn btn-danger' href='excluir/{{$categoria->id}}'>-</a>  </td>
         </tr>

@@ -7,6 +7,7 @@ use App\Models\Noticia;
 use App\Models\Categoria;
 use App\Models\Autor;
 use App\Http\Requests\NoticiaRequest;
+use Illuminate\Support\Facades\Storage;
 
 class NoticiaController extends Controller
 {
@@ -30,6 +31,17 @@ class NoticiaController extends Controller
       } else {
         $noticia = Noticia::find($request->input('id'));
       }
+      if ($request->hasFile('arquivo')) {
+        $arquivo = $request->file('arquivo');
+        $arquivoSalvo = $arquivo->store('public/imagens');
+        $arquivoSalvo = explode("/", $arquivoSalvo);
+        $tamanho = count($arquivoSalvo);
+        if ($noticia->figura != "") {
+          Storage::delete("public/imagens/$noticia->figura");
+        }
+        $noticia->figura = $arquivoSalvo[$tamanho-1];
+      }
+
       $noticia->data = $request->input('data');
       $noticia->titulo = $request->input('titulo');
       $noticia->texto = $request->input('texto');
