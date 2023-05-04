@@ -1,5 +1,4 @@
 @extends('template')
-
 @section('conteudo')
   <h1>Listagem de Notícias</h1>
   <a class="btn btn-primary" href="novo">Novo</a>
@@ -35,4 +34,5 @@
       @endforeach
     </tbody>
   </table>
+  {{ $noticias->links() }}
 @endsection
