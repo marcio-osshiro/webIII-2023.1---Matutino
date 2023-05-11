@@ -31,4 +31,5 @@ Route::get('/noticia/editar/{id}', [NoticiaController::class, 'editar']);
 Route::get('/noticia/excluir/{id}', [NoticiaController::class, 'excluir']);
 
 Route::get('/news', [NewsController::class, 'index']);
-Route::get('/news/{id}', [NewsController::class, 'noticia']);
+Route::get('/news/noticia/{id}', [NewsController::class, 'noticia']);
+Route::get('/news/categoria/{id}', [NewsController::class, 'categoria']);

@@ -13,16 +13,19 @@
   </head>
   <body>
     <header>
-      Campo Grande Noticias
+
+      <a style="text-decoration: none;color: yellow;" href="{{url('/news')}}">Campo Grande Noticias</a>
     </header>
     <nav>
       <ul>
         @foreach($categorias as $categoria)
-          <li><a href="#">{{$categoria->descricao}}</a></li>
+          <li><a href="/news/categoria/{{$categoria->id}}">{{$categoria->descricao}}</a></li>
         @endforeach
       </ul>
     </nav>
+
     @yield('conteudo')
+
     <footer>
       Construção de Paginas Web III @ ifms2023.a
     </footer>
