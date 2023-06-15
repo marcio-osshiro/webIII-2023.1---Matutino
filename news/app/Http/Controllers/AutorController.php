@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Autor;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MensagemAutor;
 
 class AutorController extends Controller
 {
@@ -61,4 +63,15 @@ class AutorController extends Controller
       return redirect('autor/listar');
     }
 
+    function mensagem($id) {
+      $autor = Autor::find($id);
+      return view('frmMensagem', compact('autor'));
+    }
+
+    function enviarMensagem(Request $request) {
+      $autor = Autor::find($request->input('id'));
+      $mensagem = $request->input('mensagem');
+      Mail::to($autor->email)->send(new MensagemAutor($autor, $mensagem));
+      return redirect('autor/listar');
+    }
 }

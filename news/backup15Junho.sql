@@ -5,7 +5,7 @@
 -- Dumped from database version 11.18 (Debian 11.18-1.pgdg100+1)
 -- Dumped by pg_dump version 15.1 (Debian 15.1-1.pgdg100+1)
 
--- Started on 2023-05-25 10:48:28 -04
+-- Started on 2023-06-15 08:57:33 -04
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -39,7 +39,8 @@ CREATE TABLE public.autor (
     id integer NOT NULL,
     nome character varying(100),
     cpf character varying(100),
-    figura character varying(50)
+    figura character varying(50),
+    email character varying(100)
 );
 
 
@@ -397,10 +398,11 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: autor; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.autor VALUES (3, 'Sandra Annenberg', '1234', 'zoNVEXHl5yqbMCxBIqVkhddjaFgXPipu2igXBV7Q.png');
-INSERT INTO public.autor VALUES (4, 'Willian Bonner', '2222', '9kJH7ZbDg0gNz4h0i2ECrwTGbvOzeFqmiwNTE74S.png');
-INSERT INTO public.autor VALUES (5, 'Maria Julia Coutinho', '3333', 'PslizhvKciufRKP0EhdViMGz8wA66UPszgN6rhcl.png');
-INSERT INTO public.autor VALUES (6, 'Roberto Cabrini', '4444', 'T19Rjrc9jaypnZYZ8Eobi7SfS2jmI2OAhUzxDGSO.png');
+INSERT INTO public.autor VALUES (3, 'Sandra Annenberg', '1234', 'zoNVEXHl5yqbMCxBIqVkhddjaFgXPipu2igXBV7Q.png', NULL);
+INSERT INTO public.autor VALUES (4, 'Willian Bonner', '2222', '9kJH7ZbDg0gNz4h0i2ECrwTGbvOzeFqmiwNTE74S.png', NULL);
+INSERT INTO public.autor VALUES (5, 'Maria Julia Coutinho', '3333', 'PslizhvKciufRKP0EhdViMGz8wA66UPszgN6rhcl.png', NULL);
+INSERT INTO public.autor VALUES (6, 'Roberto Cabrini', '4444', 'T19Rjrc9jaypnZYZ8Eobi7SfS2jmI2OAhUzxDGSO.png', NULL);
+INSERT INTO public.autor VALUES (7, 'Marcio Osshiro', '12345', 'vmrONLxBUWPTDFzl5ld5y2W8IfI1U8eEpqmcU246.jpg', 'marcio.osshiro@ifms.edu.br');
 
 
 --
@@ -497,7 +499,7 @@ INSERT INTO public.users VALUES (2, 'Márcio Osshiro', 'marcio.osshiro@ifms.edu.
 -- Name: autor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.autor_id_seq', 6, true);
+SELECT pg_catalog.setval('public.autor_id_seq', 7, true);
 
 
 --
@@ -680,7 +682,7 @@ REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2023-05-25 10:48:28 -04
+-- Completed on 2023-06-15 08:57:33 -04
 
 --
 -- PostgreSQL database dump complete

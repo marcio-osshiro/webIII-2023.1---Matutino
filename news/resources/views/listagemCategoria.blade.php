@@ -3,6 +3,7 @@
 @section('conteudo')
   <h1>Listagem de Categorias</h1>
   <a class="btn btn-primary" href="novo">Novo</a>
+  <a class="btn btn-primary" href="relatorio">Relatório</a>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>

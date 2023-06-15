@@ -10,6 +10,8 @@
         <th>Foto</th>
         <th>Nome</th>
         <th>CPF</th>
+        <th>E-mail</th>
+        <th>Mensagem</th>
         <th>Editar</th>
         <th>Excluir</th>
       </tr>
@@ -26,6 +28,8 @@
 
           <td>{{$autor->nome}}</td>
           <td>{{$autor->cpf}}</td>
+          <td>{{$autor->email}}</td>
+          <td><a class='btn btn-primary' href='mensagem/{{$autor->id}}'>Mensagem</a>  </td>
           <td><a class='btn btn-primary' href='editar/{{$autor->id}}'>+</a>  </td>
           <td><a class='btn btn-danger' href='excluir/{{$autor->id}}'>-</a>  </td>
         </tr>
